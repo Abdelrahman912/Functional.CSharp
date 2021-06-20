@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using static Functional.Core.Extensions.OptionExtension;
 
 namespace Functional.Core
@@ -26,6 +27,13 @@ namespace Functional.Core
 
         public R Match<R>(Func<R> none, Func<T, R> some) =>
             _isSome == true ? some(_value) : none();
+
+        public IEnumerable<T> AsEnumerable()
+        {
+            if(_isSome)
+                yield return _value;
+        }
+            
 
     }
 
