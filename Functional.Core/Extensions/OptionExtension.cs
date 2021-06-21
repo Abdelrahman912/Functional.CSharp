@@ -11,7 +11,7 @@ namespace Functional.Core.Extensions
             Option.None.Default;
 
         
-        public static Option.Some<T> Some<T>(T value) =>
+        public static Option<T> Some<T>(T value) =>
             new Option.Some<T>(value);
 
         public static Option<R> Map<T, R>(this Option.None _, Func<T, R> f) =>
