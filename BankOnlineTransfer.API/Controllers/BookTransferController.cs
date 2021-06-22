@@ -12,12 +12,15 @@ using static Functional.Core.Extensions.EitherExtension;
 using static Functional.Core.Extensions.ValidationExtension;
 using Unit = System.ValueTuple;
 using System.Linq;
+using static Functional.Core.Extensions.OptionExtension;
 
 namespace Functional.App.Controllers
 {
 
     public class BookTransferController:ControllerBase
     {
+
+       
 
         private readonly DateTime _now = DateTime.Now;
 

@@ -27,5 +27,18 @@ namespace Functional.Core.Extensions
             validation.Match(errors => Invalid(errors),
                              data => f(data));
 
+        public static Validation<R> Apply<T, R>(this Validation<Func<T, R>> valF, Validation<T> valT) =>
+            valF.Match(errF => Invalid(errF),
+                       f => valT.Match(
+                           errT => Invalid(errT),
+                           t => Valid(f(t))));
+
+        public static Validation<Func<T2, R>> Apply<T1, T2, R>(this Validation<Func<T1, T2, R>> valF, Validation<T1> valT) =>
+            valF.Map(f => f.Curry()).Apply(valT);
+
+        public static Validation<Func<T2,T3,R>> Apply<T1,T2,T3,R>(this Validation<Func<T1, T2,T3, R>> valF, Validation<T1> valT)=>
+            valF.Map(f=>f.CurryFirst()).Apply(valT);
+
+
     }
 }
