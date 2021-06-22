@@ -1,24 +1,26 @@
-﻿using Functional.App.Domain.Entities;
-using Functional.App.Domain.Errors;
-using Functional.Core;
+﻿using Functional.Core;
+using Functional.Core.DTOS;
+using Functional.Core.Errors;
+using Functional.Core.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using OnlineBank.Core.Domain.Entities;
+using OnlineBank.Core.Domain.Errors;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using static Functional.Core.Either;
-using Unit = System.ValueTuple;
 using static Functional.Core.Extensions.EitherExtension;
-using  Functional.Core.Extensions;
+using Unit = System.ValueTuple;
 
 namespace Functional.App.Controllers
 {
-    public class BookTransferController
+    public class BookTransferController:ControllerBase
     {
         private readonly Regex _bicRegex = new Regex("[A-Z]{11}");
 
         private readonly DateTime _now = DateTime.Now;
+
+        [HttpPost, Route("api/transfers/future")]
+        public ResultDto<Unit> BookTransfer([FromBody] BookTransfer request) =>
+            Handle(request).ToResult();
 
         private Either<Error,Unit> Handle(BookTransfer cmd)=>
             ValidateBic(cmd)

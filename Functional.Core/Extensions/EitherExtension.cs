@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Functional.Core;
+using Functional.Core.DTOS;
+using Functional.Core.Errors;
 using  Unit = System.ValueTuple;
 
 namespace Functional.Core.Extensions
@@ -17,6 +19,9 @@ namespace Functional.Core.Extensions
             either.Match<Either<L,T>>(left =>Left(left),
                                       right =>Right(func(right)));
 
+        public static Either<LL, RR> Map<L, LL, R, RR>(this Either<L, R> either,Func<L,LL> leftFunc, Func<R, RR> rightFunc) =>
+           either.Match<Either<LL,RR>>(left => Left(leftFunc(left)),
+                                     right => Right(rightFunc(right)));
 
         public static Either<L, Unit> ForEach<L, R>(this Either<L, R> either, Action<R> action) =>
             either.Match<Either<L, Unit>>(left => Left(left),
@@ -26,6 +31,11 @@ namespace Functional.Core.Extensions
         public static Either<L, T> Bind<L, R, T>(this Either<L, R> either, Func<R, Either<L,T>> func) =>
             either.Match(left => Left(left),
                          right => func(right));
+
+
+        public static ResultDto<T> ToResult<T>(this Either<Error, T> either) =>
+            either.Match(error => new ResultDto<T>(error),
+                         data => new ResultDto<T>(data));
 
     }
 }

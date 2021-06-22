@@ -1,8 +1,8 @@
-﻿using Functional.App.Domain.Entities;
-using Functional.Core;
+﻿using Functional.Core;
+using OnlineBank.Core.Domain.Entities;
 using static Functional.Core.Extensions.OptionExtension;
 
-namespace Functional.App.Domain
+namespace OnlineBank.Core.Domain
 {
     public static class Account
     {

@@ -1,4 +1,6 @@
-﻿namespace Functional.App.Domain.Errors
+﻿using Functional.Core.Errors;
+
+namespace OnlineBank.Core.Domain.Errors
 {
     public class InvalidBic:Error
     {

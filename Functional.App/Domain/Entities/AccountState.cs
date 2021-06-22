@@ -1,4 +1,4 @@
-﻿namespace Functional.App.Domain.Entities
+﻿namespace OnlineBank.Core.Domain.Entities
 {
     public class AccountState
     {

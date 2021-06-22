@@ -1,4 +1,4 @@
-﻿using Functional.App.Domain.Entities;
+﻿using OnlineBank.Core.Domain.Entities;
 
 namespace Functional.App.Interfaces
 {

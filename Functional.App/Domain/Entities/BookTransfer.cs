@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Functional.App.Domain.Entities
+namespace OnlineBank.Core.Domain.Entities
 {
     public class BookTransfer:MakeTransfer
     {

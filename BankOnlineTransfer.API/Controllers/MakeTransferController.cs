@@ -1,7 +1,7 @@
-﻿using Functional.App.Domain;
-using Functional.App.Domain.Entities;
-using Functional.App.Interfaces;
+﻿using Functional.App.Interfaces;
 using Functional.Core.Extensions;
+using OnlineBank.Core.Domain;
+using OnlineBank.Core.Domain.Entities;
 using static Functional.Core.Extensions.OptionExtension;
 
 namespace Functional.App.Controllers

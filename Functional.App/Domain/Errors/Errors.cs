@@ -1,4 +1,4 @@
-﻿namespace Functional.App.Domain.Errors
+﻿namespace OnlineBank.Core.Domain.Errors
 {
     //Factory for creating specific subclasses of Error.
     public static class Errors
