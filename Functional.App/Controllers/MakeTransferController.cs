@@ -1,5 +1,5 @@
 ﻿using Functional.App.Domain;
-using Functional.App.Entities;
+using Functional.App.Domain.Entities;
 using Functional.App.Interfaces;
 using Functional.Core.Extensions;
 using static Functional.Core.Extensions.OptionExtension;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Functional.App.Entities
+namespace Functional.App.Domain.Entities
 {
    public class MakeTransfer
     {

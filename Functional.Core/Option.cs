@@ -37,7 +37,7 @@ namespace Functional.Core
 
     }
 
-    namespace Option
+    public static class Option
     {
         public struct None
         {

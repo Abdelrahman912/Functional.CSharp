@@ -1,4 +1,4 @@
-﻿using Functional.App.Entities;
+﻿using Functional.App.Domain.Entities;
 using Functional.Core;
 using static Functional.Core.Extensions.OptionExtension;
 

@@ -1,4 +1,4 @@
-﻿namespace Functional.App.Entities
+﻿namespace Functional.App.Domain.Entities
 {
     public class AccountState
     {

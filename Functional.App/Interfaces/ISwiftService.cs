@@ -1,4 +1,4 @@
-﻿using Functional.App.Entities;
+﻿using Functional.App.Domain.Entities;
 
 namespace Functional.App.Interfaces
 {
