@@ -7,9 +7,11 @@ using OnlineBank.Core.Domain.Entities;
 using OnlineBank.Core.Domain.Errors;
 using System;
 using System.Text.RegularExpressions;
+using static Functional.Core.Functional;
 using static Functional.Core.Extensions.EitherExtension;
 using static Functional.Core.Extensions.ValidationExtension;
 using Unit = System.ValueTuple;
+using System.Linq;
 
 namespace Functional.App.Controllers
 {
@@ -18,6 +20,14 @@ namespace Functional.App.Controllers
         private readonly Regex _bicRegex = new Regex("[A-Z]{11}");
 
         private readonly DateTime _now = DateTime.Now;
+
+
+        [HttpPost, Route("api/transfers/future")]
+        public ResultDto<Unit> BookTransfer2([FromBody] BookTransfer request) =>
+           Handle2(request).Match(Invalid: errors => new ResultDto<Unit>(errors.First()),
+                                  Valid: result => result.Match(
+                                   Exception: _ => new ResultDto<Unit>(Errors.ServerError),
+                                   Success: unit => new ResultDto<Unit>(unit)));
 
         [HttpPost, Route("api/transfers/future")]
         public ResultDto<Unit> BookTransfer([FromBody] BookTransfer request) =>
@@ -48,10 +58,10 @@ namespace Functional.App.Controllers
             return default(Unit);
         }
 
-        private Validation<Unit> Handle2(BookTransfer cmd) =>
+        private Validation<Exceptional<Unit>> Handle2(BookTransfer cmd) =>
            ValidateBic2(cmd)
                .Bind(ValidateDate2)
-               .Bind(Save2);
+               .Map(Save2);
 
         private Validation<BookTransfer> ValidateBic2(BookTransfer cmd)
         {
@@ -68,9 +78,17 @@ namespace Functional.App.Controllers
             else return Valid(cmd);
         }
 
-        private Validation<Unit> Save2(BookTransfer cmd)
+        private Exceptional<Unit> Save2(BookTransfer cmd)
         {
-            return Valid(default(Unit));
+            try
+            {
+                //Some Side effect logic
+            }
+            catch (Exception exp)
+            {
+                return exp;
+            }
+            return Unit();
         }
 
 
