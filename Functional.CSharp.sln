@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineBank.Core", "Function
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineBank.API", "BankOnlineTransfer.API\OnlineBank.API.csproj", "{91C23B56-E401-4F5F-81A2-5C718F60C0E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Core", "Database.Core\Database.Core.csproj", "{87A5E6C2-4DA4-4FB4-9CD4-51F351FD0B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{91C23B56-E401-4F5F-81A2-5C718F60C0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C23B56-E401-4F5F-81A2-5C718F60C0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C23B56-E401-4F5F-81A2-5C718F60C0E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A5E6C2-4DA4-4FB4-9CD4-51F351FD0B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A5E6C2-4DA4-4FB4-9CD4-51F351FD0B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A5E6C2-4DA4-4FB4-9CD4-51F351FD0B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A5E6C2-4DA4-4FB4-9CD4-51F351FD0B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

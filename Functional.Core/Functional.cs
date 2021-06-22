@@ -22,5 +22,12 @@ namespace Functional.Core
             return dict.TryGetValue(key, out value) ? Some(value) : None;
         }
 
+        public static R Using<TDisp, R>(TDisp disposable
+        , Func<TDisp, R> func) where TDisp : IDisposable
+        {
+            using (var disp = disposable) return func(disp);
+        }
+
+
     }
 }
