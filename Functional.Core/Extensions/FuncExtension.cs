@@ -4,6 +4,13 @@ namespace Functional.Core.Extensions
 {
     public static class FuncExtension
     {
+
+        public static Func<R> Map<T, R>(this Func<T> f, Func<T, R> g) =>
+            () => g(f());
+
+        public static Func<R> Bind<T, R>(this Func<T> f, Func<T, Func<R>> g) =>
+            g(f());
+
         public static R Apply<T, R>(this Func<T, R> func, T t) =>
            func(t);
 

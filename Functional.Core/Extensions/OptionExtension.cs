@@ -64,5 +64,23 @@ namespace Functional.Core.Extensions
 
         public static Option<Func<T2,T3, R>> Apply<T1, T2,T3, R>(this Option<Func<T1, T2,T3, R>> optF, Option<T1> optT) =>
            optF.Map(f => f.CurryFirst()).Apply(optT);
+
+
+        public static Option<T> OrElse<T>(this Option<T> left, Option<T> right) =>
+            left.Match(() => right,
+                        _ => left);
+
+        public static Option<T> OrElse<T>(this Option<T> option, Func<Option<T>> fallback) =>
+            option.Match(() => fallback(),
+                         _ => option);
+
+        public static T GetOrElse<T>(this Option<T> left, T right) =>
+           left.Match(() => right,
+                       t => t);
+
+        public static T GetOrElse<T>(this Option<T> option, Func<T> fallback) =>
+            option.Match(() => fallback(),
+                         t => t);
+
     }
 }

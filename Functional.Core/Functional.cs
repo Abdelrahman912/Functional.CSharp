@@ -11,6 +11,8 @@ namespace Functional.Core
 {
     public static class  Functional
     {
+        public static Try<T> Try<T>(Func<T> f) => () => f();
+
         public static Unit Unit() => default(Unit);
 
         public static Option<string> Lookup(this NameValueCollection @this, string key) =>
